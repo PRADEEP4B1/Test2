@@ -5,9 +5,8 @@ dmdd,d}
 pdp33
 pdp55
 pdp66
-
-To https://github.com/PRADEEP4B1/Test2.git
- + 1f27ba4...c2f6282 master -> master (forced update)
+pdp22
+pdp44
  resource "aws_instance" "demo_server" {
   ami           = "ami-02a2af70a66af6dfb"
   instance_type = "t2.micro"
