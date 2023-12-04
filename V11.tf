@@ -13,6 +13,7 @@ resource "aws_security_group" "demo-sg" {
   name        = "demo-sg"
   description = "SSH Access"
   
+  fgfg
   
 
   ingress {
