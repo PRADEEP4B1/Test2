@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         
-        GIT_BRANCH = env.BRANCH_NAME
-        BUILD_NUMBER = env.BUILD_NUMBER
-        JOB_NAME = env.JOB_NAME
+        GIT_BRANCH = 'env.BRANCH_NAME'
+        BUILD_NUMBER = "env.BUILD_NUMBER"
+        JOB_NAME = {env.JOB_NAME}
        
     }
 
