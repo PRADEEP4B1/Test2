@@ -8,7 +8,7 @@ pipeline {
     }
 
     
-
+stages{
 
         stage('Set Environment and Run Specific Steps') {
             steps {
