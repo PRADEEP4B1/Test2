@@ -5,7 +5,7 @@ pipeline {
         
         GIT_BRANCH = 'env.BRANCH_NAME'
         BUILD_NUMBER = "env.BUILD_NUMBER"
-        JOB_NAME = {env.JOB_NAME}
+        JOB_NAME = "env.JOB_NAME"
        
     }
 
