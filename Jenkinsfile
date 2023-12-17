@@ -1,56 +1,44 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = tool 'Maven'
-        PATH = "$MAVEN_HOME/bin:$PATH"
-    }
+   
 
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '10'))
-        disableConcurrentBuilds()
-    }
-
-    stages{
+    stages {
         
-        stage('Code Coverage') {
-            when {
-                // Execute this stage only for the 'main' branch
-                expression { env.BRANCH_NAME == 'main' }
-            }
+
+        stage('Build') {
             steps {
                 script {
-                    echo "Main branchdone"
+                    echo 'Building...'
+
+                     if (env.BRANCH_NAME == 'master') {
+                        echo 'Running additional steps for the master branch...'
+                        
+                    } else if (env.BRANCH_NAME == 'develop') {
+                        echo 'Running additional steps for the develop branch...'
+                       
+                    } else {
+                        echo 'Running default steps for other branches...'
+                        
+                    }
+
+                    // Common build steps
+                    echo "Branch selected...."
                 }
             }
         }
 
-        stage('Additional Steps for Feature Branch') {
-            when {
-                // Execute this stage only for branches starting with 'feature/'
-                expression { env.BRANCH_NAME.startsWith('feature/') 
-}
-            }
-            steps {
-                script {
-                    // Additional steps for feature branches
-                    echo 'Running additional steps for feature branch...'
-                }
-            }
-        }
+      
     }
 
     post {
         always {
-            // Publish JUnit test results
-            echo success always'"
+            echo 'i am post section'
         }
         success {
-            // Display a success message
             echo 'Pipeline succeeded!'
         }
         failure {
-            // Display a failure message
-            echo 'Pipeline failed!'        }
-    }
+            echo 'Pipeline failed!'      }    }
+
 }
