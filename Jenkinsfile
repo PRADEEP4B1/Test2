@@ -11,7 +11,7 @@ pipeline {
         disableConcurrentBuilds()
     }
 
-    
+    stages{
         
         stage('Code Coverage') {
             when {
@@ -51,7 +51,6 @@ pipeline {
         }
         failure {
             // Display a failure message
-            echo 'Pipeline failed!'
-        }
+            echo 'Pipeline failed!'        }
     }
 }
