@@ -43,7 +43,7 @@ pipeline {
     post {
         always {
             // Publish JUnit test results
-            echo "junit '**/target/surefire-reports/*.xml'"
+            echo success always'"
         }
         success {
             // Display a success message
