@@ -39,9 +39,7 @@ stages{
                     echo 'build'                }            }        } }
 
 
-
-
-    post {
+post {
         always {
             echo 'PostAction'
         }
@@ -51,5 +49,7 @@ stages{
         }
         failure {
             echo 'Pipeline failed!'
-            // Additional steps for failure        }     }
-}
+                }     }
+
+    
+} 
