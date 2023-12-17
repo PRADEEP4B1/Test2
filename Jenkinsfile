@@ -1,44 +1,37 @@
 pipeline {
     agent any
 
-   
+    environment {
+        // Accessing system environment variables
+        GIT_BRANCH = env.BRANCH_NAME
+        BUILD_NUMBER = env.BUILD_NUMBER
+        JOB_NAME = env.JOB_NAME
+        // Add more variables as needed
+    }
 
     stages {
-        
-
-        stage('Build') {
+        stage('Print Environment Variables') {
             steps {
                 script {
-                    echo 'Building...'
-
-                     if (env.BRANCH_NAME == 'master') {
-                        echo 'Running additional steps for the master branch...'
-                        
-                    } else if (env.BRANCH_NAME == 'develop') {
-                        echo 'Running additional steps for the develop branch...'
-                       
-                    } else {
-                        echo 'Running default steps for other branches...'
-                        
-                    }
-
-                    // Common build steps
-                    echo "Branch selected...."
+                    // Printing system environment variables
+                    echo "GIT_BRANCH: ${GIT_BRANCH}"
+                    echo "BUILD_NUMBER: ${BUILD_NUMBER}"
+                    echo "JOB_NAME: ${JOB_NAME}"
+                    // Add more echo statements as needed
                 }
             }
         }
 
-      
+        // Add more stages as needed
     }
 
     post {
-        always {
-            echo 'i am post section'
-        }
         success {
-            echo 'Pipeline succeeded!'
+            // Additional steps for success
         }
         failure {
-            echo 'Pipeline failed!'      }    }
-
+            // Additional steps for failure
+        }
+    }
 }
+
